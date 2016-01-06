@@ -1,4 +1,5 @@
-import React from 'react/addons';
+import React from 'react';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 import ReactMixin from 'react-mixin';
 import Auth from '../services/AuthService';
 
@@ -41,4 +42,4 @@ export default class Login extends React.Component {
   }
 }
 
-ReactMixin(Login.prototype, React.addons.LinkedStateMixin);
+ReactMixin(Login.prototype, LinkedStateMixin);

@@ -37,8 +37,12 @@
   "dependencies": {
     "bootstrap": "^3.3.0",
     "flux": "^2.0.1",
-    "react": "^0.13.1",
+    "history": "^1.17.0",
+    "react": "^0.14.5",
+    "react-addons-linked-state-mixin": "^0.14.5",
+    "react-dom": "^0.14.5",
     "react-mixin": "^3.0.3",
+    "react-router": "^1.0.3",
     "reqwest": "^2.0.5",
     "when": "^3.7.7"
   },

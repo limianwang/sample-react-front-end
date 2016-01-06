@@ -1,9 +1,20 @@
-//import AppDispatcher from '../dispatchers/AppDispatcher';
-//import RouterContainer from '../services/RouterContainer';
+import AppDispatcher from '../dispatchers';
+import RouterContainer from '../services/RouterContainer';
 
 export default {
   loginUser: (jwt) => {
-    console.log('hello');
-    console.log(localStorage);
+    let savedJwt = localStorage.getItem('jwt');
+
+    AppDispatcher.dispatch({
+      actionType: 'LOGIN_USER',
+      jwt: jwt
+    });
+
+    if (savedJwt !== jwt) {
+      let nextPath = RouterContainer.get().getCurrentQuery().nextPath || '/';
+
+      RouterContainer.get().transitionTo(nextPath);
+      localStorage.setItem('jwt', jwt);
+    }
   }
 }

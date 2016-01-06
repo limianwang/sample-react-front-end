@@ -4,6 +4,17 @@ import LoginActions from '../actions/LoginActions';
 
 class AuthService {
   login(username, password) {
+    return this._login(username, password)
+      .then(function(response) {
+        let jwt = response.token;
+
+        LoginActions.loginUser(jwt);
+
+        return true;
+      });
+  }
+
+  _login(username, password) {
     return new Promise((resolve, reject) => {
       request({
         url: 'http://localhost:3001/login',
@@ -14,26 +25,13 @@ class AuthService {
           username, password
         },
         success: (resp) => {
-          console.log(resp);
           resolve(resp);
         },
         error: (err) => {
-          console.log(err);
           reject(err);
         }
       })
     })
-  }
-
-  handleAuth(loginPromise) {
-    return loginPromise
-      .then(function(response) {
-        let jwt = response.id_token;
-
-        LoginActions.loginUser(jwt);
-
-        return true;
-      });
   }
 }
 

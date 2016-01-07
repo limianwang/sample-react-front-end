@@ -12,9 +12,7 @@ export default (ComposedComponent) => {
     }
 
     constructor() {
-      console.log("hi")
       super();
-      console.log("hi")
       this.state = this._getLoginState();
     }
 
